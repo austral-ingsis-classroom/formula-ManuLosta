@@ -2,20 +2,20 @@ package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.visitor.Visitor;
 
-public class Number implements Expression {
-    private final Double value;
+public class Modulus implements Expression {
+    private final Expression value;
 
-    public Number(Double value) {
+    public Modulus(Expression value) {
         this.value = value;
     }
 
     @Override
     public Double calculate() {
-        return value;
+        return Math.abs(value.calculate());
     }
 
     @Override
     public void accept(Visitor visitor) {
-        visitor.visitNumber(this);
+        visitor.visitModulus(this);
     }
 }
