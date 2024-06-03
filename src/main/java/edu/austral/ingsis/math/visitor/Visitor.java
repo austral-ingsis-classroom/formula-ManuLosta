@@ -11,4 +11,5 @@ public interface Visitor {
     void visitMultiply(Multiply multiply);
     void visitPower(Power power);
     void visitModulus(Modulus modulus);
+    void visitVariable(Variable variable);
 }
