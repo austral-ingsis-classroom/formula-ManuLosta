@@ -39,12 +39,6 @@ class Divide implements Expression {
     + accept(Visitor): void
 }
 
-class SquareRoot implements Expression {
-    - value: Expression
-    + calculate(): double
-    + accept(Visitor): void
-}
-
 class Power implements Expression {
     - base: Expression
     - exponent: Expression

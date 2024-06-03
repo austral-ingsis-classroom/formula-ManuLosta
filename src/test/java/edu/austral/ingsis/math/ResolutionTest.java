@@ -73,7 +73,7 @@ public class ResolutionTest {
   /** Case (5 - 5) * 8 */
   @Test
   public void shouldResolveSimpleFunction8() {
-    final Double formula = new Multiply(new Sum(new Number(5d), new Number(-5d)), new Number(8d)).calculate();
+    final Double formula = new Multiply(new Subtract(new Number(5d), new Number(5d)), new Number(8d)).calculate();
     final Double result = 0d;
 
     assertThat(result, equalTo(formula));
