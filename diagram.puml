@@ -1,0 +1,65 @@
+@startuml
+
+interface Expression {
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+class Sum implements Expression {
+    - left: Expression
+    - right: Expression
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+class Subtract implements Expression {
+    - left: Expression
+    - right: Expression
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+class Divide implements Expression {
+    - numerator: Expression
+    - denominator: Expression
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+class SquareRoot implements Expression {
+    - value: Expression
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+class Power implements Expression {
+    - base: Expression
+    - exponent: Expression
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+class Number implements Expression {
+    - value: double
+    + calculate(): double
+    + accept(Visitor): void
+   }
+
+class Variable implements Expression {
+    - value: Expression
+    + calculate(): double
+    + accept(Visitor): void
+}
+
+interface Visitor {
+    + visitSum(sum: Sum)
+    + visitSubtract(subtract: Subtract)
+    + visitDivide(divide: Divide)
+    + visitSquareRoot(squareRoot: SquareRoot)
+    + visitPower(power: Power)
+    + visitNumber(number: Number)
+    + visitVariable(variable: Variable)
+}
+
+
+@enduml
