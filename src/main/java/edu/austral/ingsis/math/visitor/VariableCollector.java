@@ -17,42 +17,42 @@ public class VariableCollector implements Visitor {
 
   @Override
   public void visitSum(Sum sum) {
-    sum.left().accept(this);
-    sum.right().accept(this);
+    sum.getLeft().accept(this);
+    sum.getRight().accept(this);
   }
 
   @Override
   public void visitSubtract(Subtract subtract) {
-    subtract.left().accept(this);
-    subtract.right().accept(this);
+    subtract.getLeft().accept(this);
+    subtract.getRight().accept(this);
   }
 
   @Override
   public void visitDivide(Divide divide) {
-    divide.numerator().accept(this);
-    divide.denominator().accept(this);
+    divide.getNumerator().accept(this);
+    divide.getDenominator().accept(this);
   }
 
   @Override
   public void visitMultiply(Multiply multiply) {
-    multiply.left().accept(this);
-    multiply.right().accept(this);
+    multiply.getLeft().accept(this);
+    multiply.getRight().accept(this);
   }
 
   @Override
   public void visitPower(Power power) {
-    power.base().accept(this);
-    power.exponent().accept(this);
+    power.getBase().accept(this);
+    power.getExponent().accept(this);
   }
 
   @Override
   public void visitModulus(Modulus modulus) {
-    modulus.value().accept(this);
+    modulus.getValue().accept(this);
   }
 
   @Override
   public void visitVariable(Variable variable) {
-    variables.add(variable.name());
+    variables.add(variable.getName());
   }
 
   public static List<String> getVariables(Expression expression) {

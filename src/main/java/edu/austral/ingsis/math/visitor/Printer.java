@@ -15,44 +15,44 @@ public class Printer implements Visitor {
 
   @Override
   public void visitNumber(Number number) {
-    stringBuilder.append(number.value());
+    stringBuilder.append(number.getValue());
   }
 
   @Override
   public void visitSum(Sum sum) {
-    handleBinaryOperation(sum.left(), sum.right(), "+");
+    handleBinaryOperation(sum.getLeft(), sum.getRight(), "+");
   }
 
   @Override
   public void visitSubtract(Subtract subtract) {
-    handleBinaryOperation(subtract.left(), subtract.right(), "-");
+    handleBinaryOperation(subtract.getLeft(), subtract.getRight(), "-");
   }
 
   @Override
   public void visitDivide(Divide divide) {
-    handleBinaryOperation(divide.numerator(), divide.denominator(), "/");
+    handleBinaryOperation(divide.getNumerator(), divide.getDenominator(), "/");
   }
 
   @Override
   public void visitMultiply(Multiply multiply) {
-    handleBinaryOperation(multiply.left(), multiply.right(), "*");
+    handleBinaryOperation(multiply.getLeft(), multiply.getRight(), "*");
   }
 
   @Override
   public void visitPower(Power power) {
-    handleBinaryOperation(power.base(), power.exponent(), "^");
+    handleBinaryOperation(power.getBase(), power.getExponent(), "^");
   }
 
   @Override
   public void visitModulus(Modulus modulus) {
     stringBuilder.append("|");
-    modulus.value().accept(this);
+    modulus.getValue().accept(this);
     stringBuilder.append("|");
   }
 
   @Override
   public void visitVariable(Variable variable) {
-    stringBuilder.append(variable.name());
+    stringBuilder.append(variable.getName());
   }
 
   private void handleBinaryOperation(Expression left, Expression right, String operator) {

@@ -3,7 +3,17 @@ package edu.austral.ingsis.math;
 import edu.austral.ingsis.math.visitor.Visitor;
 import java.util.Map;
 
-public record Number(Double value) implements Expression {
+public class Number implements Expression {
+  private final Double value;
+
+  public Number(Double value) {
+    this.value = value;
+  }
+
+  public Double getValue() {
+    return value;
+  }
+
   @Override
   public Double calculate(Map<String, Expression> variables) {
     return value;
