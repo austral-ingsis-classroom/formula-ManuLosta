@@ -1,12 +1,11 @@
 package edu.austral.ingsis.math;
 
-import org.junit.jupiter.api.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class ResolutionWithVariablesTest {
 
@@ -78,7 +77,8 @@ public class ResolutionWithVariablesTest {
     Map<String, Expression> variables = new HashMap<>();
     variables.put("z", new Number(36d));
 
-    final Double formula = new Power(z, new Divide(new Number(1d), new Number(2d))).calculate(variables);
+    final Double formula =
+        new Power(z, new Divide(new Number(1d), new Number(2d))).calculate(variables);
     final Double result = 6d;
 
     assertThat(result, equalTo(formula));
@@ -106,7 +106,8 @@ public class ResolutionWithVariablesTest {
     Map<String, Expression> variables = new HashMap<>();
     variables.put("i", new Number(2d));
 
-    final Double formula = new Multiply(new Subtract(new Number(5d), i), new Number(8d)).calculate(variables);
+    final Double formula =
+        new Multiply(new Subtract(new Number(5d), i), new Number(8d)).calculate(variables);
     final Double result = 24d;
 
     assertThat(result, equalTo(formula));

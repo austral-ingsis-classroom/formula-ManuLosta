@@ -1,10 +1,10 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.visitor.Printer;
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import edu.austral.ingsis.math.visitor.Printer;
+import org.junit.jupiter.api.Test;
 
 public class PrintTest {
 
@@ -66,7 +66,8 @@ public class PrintTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldPrintFunction8() {
-    final Expression e = new Multiply(new Subtract(new Number(5d), new Variable("i")), new Number(8d));
+    final Expression e =
+        new Multiply(new Subtract(new Number(5d), new Variable("i")), new Number(8d));
     final String expected = "(5.0 - i) * 8.0";
 
     final String result = Printer.print(e);

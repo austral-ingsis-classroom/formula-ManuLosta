@@ -1,14 +1,12 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.visitor.VariableCollector;
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
-import java.util.ArrayList;
+import edu.austral.ingsis.math.visitor.VariableCollector;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class ListVariablesTest {
 
@@ -33,7 +31,8 @@ public class ListVariablesTest {
   /** Case (9 / x) * y */
   @Test
   public void shouldListVariablesFunction3() {
-    final Expression e = new Multiply(new Divide(new Number(9d), new Variable("x")), new Variable("y"));
+    final Expression e =
+        new Multiply(new Divide(new Number(9d), new Variable("x")), new Variable("y"));
     final List<String> result = VariableCollector.getVariables(e);
 
     assertThat(result, containsInAnyOrder("x", "y"));
@@ -42,7 +41,8 @@ public class ListVariablesTest {
   /** Case (27 / a) ^ b */
   @Test
   public void shouldListVariablesFunction4() {
-    final Expression e = new Power(new Divide(new Number(27d), new Variable("a")), new Variable("b"));
+    final Expression e =
+        new Power(new Divide(new Number(27d), new Variable("a")), new Variable("b"));
     final List<String> result = VariableCollector.getVariables(e);
 
     assertThat(result, containsInAnyOrder("a", "b"));
@@ -69,7 +69,8 @@ public class ListVariablesTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldListVariablesFunction8() {
-    final Expression e = new Multiply(new Subtract(new Number(5d), new Variable("i")), new Number(8d));
+    final Expression e =
+        new Multiply(new Subtract(new Number(5d), new Variable("i")), new Number(8d));
     final List<String> result = VariableCollector.getVariables(e);
 
     assertThat(result, containsInAnyOrder("i"));
