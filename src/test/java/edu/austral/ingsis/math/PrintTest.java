@@ -1,5 +1,6 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.visitor.Printer;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -10,8 +11,11 @@ public class PrintTest {
   /** Case 1 + 6 */
   @Test
   public void shouldPrintFunction1() {
-    final String expected = "1 + 6";
-    final String result = expected;
+    final Expression expression = new Sum(new Number(1d), new Number(6d));
+    final String expected = "1.0 + 6.0";
+
+    final Printer printer = new Printer();
+    final String result = printer.print(expression);
 
     assertThat(result, equalTo(expected));
   }
@@ -19,8 +23,11 @@ public class PrintTest {
   /** Case 12 / 2 */
   @Test
   public void shouldPrintFunction2() {
-    final String expected = "12 / 2";
-    final String result = expected;
+    final Expression e = new Divide(new Number(12d), new Number(2d));
+    final String expected = "12.0 / 2.0";
+
+    final Printer printer = new Printer();
+    final String result = printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -28,8 +35,11 @@ public class PrintTest {
   /** Case (9 / 2) * 3 */
   @Test
   public void shouldPrintFunction3() {
-    final String expected = "(9 / 2) * 3";
-    final String result = expected;
+    final Expression e = new Multiply(new Divide(new Number(9d), new Number(2d)), new Number(3d));
+    final String expected = "(9.0 / 2.0) * 3.0";
+
+    final Printer printer = new Printer();
+    final String result = printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -37,8 +47,11 @@ public class PrintTest {
   /** Case (27 / 6) ^ 2 */
   @Test
   public void shouldPrintFunction4() {
-    final String expected = "(27 / 6) ^ 2";
-    final String result = expected;
+    final Expression e = new Power(new Divide(new Number(27d), new Number(6d)), new Number(2d));
+    final String expected = "(27.0 / 6.0) ^ 2.0";
+
+    final Printer printer = new Printer();
+    final String result = printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -46,17 +59,11 @@ public class PrintTest {
   /** Case |value| - 8 */
   @Test
   public void shouldPrintFunction6() {
-    final String expected = "|value| - 8";
-    final String result = expected;
+    final Expression e = new Subtract(new Modulus(new Variable("value")), new Number(8d));
+    final String expected = "|value| - 8.0";
 
-    assertThat(result, equalTo(expected));
-  }
-
-  /** Case |value| - 8 */
-  @Test
-  public void shouldPrintFunction7() {
-    final String expected = "|value| - 8";
-    final String result = expected;
+    final Printer printer = new Printer();
+    final String result = printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -64,8 +71,11 @@ public class PrintTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldPrintFunction8() {
-    final String expected = "(5 - i) * 8";
-    final String result = expected;
+    final Expression e = new Multiply(new Subtract(new Number(5d), new Variable("i")), new Number(8d));
+    final String expected = "(5.0 - i) * 8.0";
+
+    final Printer printer = new Printer();
+    final String result = printer.print(e);
 
     assertThat(result, equalTo(expected));
   }

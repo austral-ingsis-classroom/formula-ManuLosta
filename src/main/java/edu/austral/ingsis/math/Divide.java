@@ -4,15 +4,7 @@ import edu.austral.ingsis.math.visitor.Visitor;
 
 import java.util.Map;
 
-public class Divide implements Expression {
-    final private Expression numerator;
-    final private Expression denominator;
-
-    public Divide(Expression numerator, Expression denominator) {
-        this.numerator = numerator;
-        this.denominator = denominator;
-    }
-
+public record Divide(Expression numerator, Expression denominator) implements Expression {
     @Override
     public Double calculate(Map<String, Expression> variables) {
         return numerator.calculate(variables) / denominator.calculate(variables);

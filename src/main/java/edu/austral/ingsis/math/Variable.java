@@ -4,13 +4,7 @@ import edu.austral.ingsis.math.visitor.Visitor;
 
 import java.util.Map;
 
-public class Variable implements Expression {
-    final private String name;
-
-    public Variable(String name) {
-        this.name = name;
-    }
-
+public record Variable(String name) implements Expression {
     @Override
     public Double calculate(Map<String, Expression> variables) {
         return variables.get(name).calculate(variables);
@@ -24,9 +18,5 @@ public class Variable implements Expression {
     @Override
     public void accept(Visitor visitor) {
         visitor.visitVariable(this);
-    }
-
-    public String getName() {
-        return name;
     }
 }

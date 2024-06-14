@@ -4,13 +4,7 @@ import edu.austral.ingsis.math.visitor.Visitor;
 
 import java.util.Map;
 
-public class Modulus implements Expression {
-    private final Expression value;
-
-    public Modulus(Expression value) {
-        this.value = value;
-    }
-
+public record Modulus(Expression value) implements Expression {
     @Override
     public Double calculate(Map<String, Expression> variables) {
         return Math.abs(value.calculate(variables));
