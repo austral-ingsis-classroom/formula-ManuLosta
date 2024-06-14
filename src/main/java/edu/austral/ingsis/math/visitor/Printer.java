@@ -9,7 +9,7 @@ public class Printer implements Visitor {
     private final StringBuilder stringBuilder;
     private final Stack<Boolean> needsParenthesesStack;
 
-    public Printer() {
+    private Printer() {
         this.stringBuilder = new StringBuilder();
         this.needsParenthesesStack = new Stack<>();
     }
@@ -73,8 +73,9 @@ public class Printer implements Visitor {
         if (needsParentheses) stringBuilder.append(")");
     }
 
-    public String print(Expression expression) {
-        expression.accept(this);
-        return stringBuilder.toString();
+    public static String print(Expression expression) {
+        final Printer printer = new Printer();
+        expression.accept(printer);
+        return printer.stringBuilder.toString();
     }
 }

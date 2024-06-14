@@ -14,8 +14,7 @@ public class PrintTest {
     final Expression expression = new Sum(new Number(1d), new Number(6d));
     final String expected = "1.0 + 6.0";
 
-    final Printer printer = new Printer();
-    final String result = printer.print(expression);
+    final String result = Printer.print(expression);
 
     assertThat(result, equalTo(expected));
   }
@@ -26,8 +25,7 @@ public class PrintTest {
     final Expression e = new Divide(new Number(12d), new Number(2d));
     final String expected = "12.0 / 2.0";
 
-    final Printer printer = new Printer();
-    final String result = printer.print(e);
+    final String result = Printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -38,8 +36,7 @@ public class PrintTest {
     final Expression e = new Multiply(new Divide(new Number(9d), new Number(2d)), new Number(3d));
     final String expected = "(9.0 / 2.0) * 3.0";
 
-    final Printer printer = new Printer();
-    final String result = printer.print(e);
+    final String result = Printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -50,8 +47,7 @@ public class PrintTest {
     final Expression e = new Power(new Divide(new Number(27d), new Number(6d)), new Number(2d));
     final String expected = "(27.0 / 6.0) ^ 2.0";
 
-    final Printer printer = new Printer();
-    final String result = printer.print(e);
+    final String result = Printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -62,8 +58,7 @@ public class PrintTest {
     final Expression e = new Subtract(new Modulus(new Variable("value")), new Number(8d));
     final String expected = "|value| - 8.0";
 
-    final Printer printer = new Printer();
-    final String result = printer.print(e);
+    final String result = Printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
@@ -74,8 +69,7 @@ public class PrintTest {
     final Expression e = new Multiply(new Subtract(new Number(5d), new Variable("i")), new Number(8d));
     final String expected = "(5.0 - i) * 8.0";
 
-    final Printer printer = new Printer();
-    final String result = printer.print(e);
+    final String result = Printer.print(e);
 
     assertThat(result, equalTo(expected));
   }
